@@ -1,0 +1,557 @@
+/* app/globals.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;500;600&display=swap');
+
+
+:root {
+  --accent: #f2a9b9;
+  --bg: #3e1620;
+  --card: #ffffff;
+  --text: #fefafc;
+}
+
+
+html { 
+  font-size: clamp(15px, 1.25vw, 18px); 
+  box-sizing: border-box; 
+}
+*, *::before, *::after { 
+  box-sizing: inherit; 
+}
+
+/* === CURTAIN CONTAINER === */
+.curtain-container {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* === VELVET CURTAIN SIDES === */
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at top center, #5a0a0a 0%, #2a0202 80%);
+  background-size: 200% 200%;
+  animation: velvetFlow 8s ease-in-out infinite alternate;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9);
+  z-index: 2;
+}
+
+/* soft fabric shimmer */
+@keyframes velvetFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.curtain.left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.curtain.right {
+  right: 0;
+  transform-origin: right center;
+}
+
+/* === TEXT === */
+.curtain-text {
+  position: relative;
+  z-index: 3;
+  color: #f9f5f6;
+  font-size: 2.2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 180, 200, 0.5);
+  animation: fadeInTitle 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInTitle {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #f5f5f5;
+  background: radial-gradient(circle at top left, #4b1c24 0%, #2b0f15 70%, #1a070a 100%);
+  background-attachment: fixed;
+  line-height: 1.7;
+  background-image:
+  radial-gradient(circle at top left, #4b1c24 0%, #2b0f15 70%, #1a070a 100%),
+  url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+background-repeat: repeat;
+background-size: auto;
+}
+
+/* hero / header */
+.hero {
+  background: url('/header-flower.jpg') no-repeat center center/cover;
+  text-align: center;
+  padding: 4.5rem 1rem 2rem;
+  color: white;
+  border-radius: 0 0 40px 40px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-inner { 
+  max-width: 1000px; 
+  margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center; 
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  animation: fadeIn 2.2s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero .tagline {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  opacity: 0.9;
+}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.03em;
+  color: #fdf0f3;
+}
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* profile row under hero */
+.profile-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* links & contact in hero */
+.links { 
+  text-align: center; 
+  font-size: clamp(0.9rem, 2vw, 1rem); 
+}
+
+.links p { 
+  margin: 0.25rem 0; 
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+a:hover {
+  color: #fff;
+  transform: scale(1.05);
+}
+
+
+.links i {
+  margin-right: 0.5rem;
+}
+
+.photo img {
+  width: clamp(120px, 20vw, 220px); 
+  height: auto;                     
+  object-fit: contain;             
+  border-radius: 0;                 
+  border: none;                    
+  background: none;                
+}
+
+/* cards */
+.card {
+  background: rgba(30, 10, 15, 0.85); /* dark wine translucent tone */
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 900px;
+  color: #f5f5f5; /* soft text color for readability */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px); /* smooth frosted-glass effect */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+/* Center text in About section specifically */
+#about {
+  text-align: center;
+}
+
+#about p {
+  max-width: 700px;
+  margin: 0.5rem auto;
+  line-height: 1.6;
+}
+
+/* optional hover subtle glow */
+.card:hover {
+  background: rgba(45, 15, 25, 0.9);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+/* projects grid */
+.projects-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 1.5rem; 
+  justify-items: center;
+}
+.project {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  max-width: 300px;
+}
+
+.project:hover {
+  transform: scale(1.03);
+}
+
+.project img { 
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
+  border-bottom: 2px solid var(--accent);
+}
+
+.project h3 { 
+  margin: 0.75rem 0 0.25rem;
+  color:#4b1c24;
+}
+
+.project p {
+  color: #333;
+  font-size: 0.9rem;
+  padding: 0 0.65rem 1rem;
+}
+
+.fashion-show .model img {
+  width: 100%;
+  height: 200px;       /* fixed height for all images */
+  object-fit: cover;   /* crop if needed without stretching */
+  border-radius: 8px;  /* optional rounded corners */
+}
+.avatar-container {
+  position: relative;
+  width: 280px;
+  height: auto;
+  aspect-ratio: 3 / 4; /* adjust based on your image proportions */
+  margin: 0 auto;
+}
+
+.avatar-img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.cv-links a,
+.project-links a {
+  background: linear-gradient(145deg, rgba(60, 25, 35, 0.9), rgba(25, 10, 15, 0.9));
+  color: #f9f5f6;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.cv-links a:hover,
+.project-links a:hover {
+  background: linear-gradient(145deg, rgba(90, 40, 55, 1), rgba(40, 15, 25, 1));
+  box-shadow: 0 0 12px rgba(242, 169, 185, 0.5);
+  color: #fff;
+}
+
+/* === CONTACT POPUP MODAL ===*/
+.contact-btn {
+  background: linear-gradient(145deg, #f2a9b9, #c06b7f);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  display: block;
+  margin: 2rem auto;
+}
+
+.contact-btn:hover {
+  transform: scale(1.05);
+  box-shadow:0 0 20px rgba(242, 169, 185, 0.4);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0m 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.contact-modal {
+  background: rgba(30, 10, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 25px rgba(255, 192, 203, 0.15);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  width: 400px;
+  color: #fdf0f3;
+  text-align: left;
+  animation: fadeIn 0.5s ease;
+  position: relative;
+}
+
+.contact-modal h2 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: #fdf0f3;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #f2a9b9;
+}
+
+.send-btn {
+  background: linear-gradient(145deg, #f2a9b9, #c06b7f);
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  align-self: center;
+  transition: 0.3s ease;
+}
+
+.send-btn:hover {
+  background: linear-gradient(145deg, #ffb4c5, #d27c8b);
+  transform: scale(1.05);
+}
+
+.close-btn {
+  position:absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #f2a9b9;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color : #fff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+/* footer */
+.footer { text-align: center; padding: 1.5rem 0; color: #666; font-size: 0.9rem; }
+
+/* === Social icons section (final elegant version) === */
+.hero .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem; /* More breathing room between icons */
+  margin-top: 1.8rem;
+}
+
+/* base icon styling */
+.hero .social-links a {
+  position: relative;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #f5c7d0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.15), rgba(0, 0, 0, 0.2));
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 182, 193, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.4s ease, color 0.3s ease;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* hover animation with sakura glow */
+@keyframes sakuraPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 182, 193, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(255, 192, 203, 0.9);
+  }
+}
+
+.hero .social-links a:hover {
+  color: #fff;
+  transform: translateY(-4px) scale(1.15);
+  animation: sakuraPulse 1.5s infinite ease-in-out;
+}
+
+/* tooltip text (aria-label) */
+.hero .social-links a::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffdbe5;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hero .social-links a:hover::after {
+  opacity: 1;
+}
+
+/* --- Tooltip labels (appear on hover) --- */
+.hero .social-links a::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: -1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffdbe5;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hero .social-links a:hover::after {
+  opacity: 1;
+}
+.hero .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.15), rgba(0,0,0,0.2));
+}
+
+/* responsive small screens tweaks */
+@media (max-width: 768px) {
+  .profile-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo img {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* existing profile + hero rules … */
+
+  /* FashionShow adjustments */
+  .fashion-top {
+    flex-direction: column !important;
+  }
+
+  .guide img {
+    width: 100px !important;
+    margin-bottom: 1rem;
+  }
+
+  .runway {
+    height: auto !important;
+    min-height: 180px !important;
+  }
+
+  .model img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 80%;
+    max-height: 180px;
+    object-fit: contain !important;
+  }
+
+  .project-card {
+    max-width: 95%;
+  }
+}
+
