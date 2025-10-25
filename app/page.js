@@ -9,7 +9,7 @@ const fashionItems = [
   {
     img: "/Aya-h.jpg",
     title: "Hello, it's me Aya",
-    desc: "Student at Informatic school Epitech Strasbourg, Currently seeking an internship in web development to expand my skills and contribute to creative projects.",
+    desc: "Student at Informatic school Epitech Strasbourg, currently seeking an internship in web development to expand my skills and contribute to creative projects.",
     link: "https://www.linkedin.com/in/aya-hasegawa-46786a137/",
   },
   {
@@ -23,18 +23,18 @@ const fashionItems = [
     title: "CV Website",
     desc: "Created a responsive online CV using HTML and CSS, including a printable version for easy download.",
     github: "https://github.com/EpitechMscProPromo2028/T-WEB-500-digitalResume-STG_aya-hasegawa",
-    pdf: "/CV Français Aya HASEGAWA.pdf"
+    pdf: "/CV Français Aya HASEGAWA.pdf",
   },
   {
     img: "/Nicejob.png",
-    title: "Jobboard project - Nice Job- ",
+    title: "Jobboard project - Nice Job -",
     desc: "Collaborated with teammates on a Job Board platform, developing with Vue.js and Tailwind CSS to deliver a modern, responsive interface.",
     link: "https://github.com/EpitechMscProPromo2028/T-WEB-501-STG_1",
   },
   {
     img: "/NiceJobproject.webm",
     title: "Showcasing how the Nice Job website functions —",
-    desc: "primarily responsible for the front-end development, while also contributing to back-end integration.",
+    desc: "Primarily responsible for the front-end development, while also contributing to back-end integration.",
     link: "#",
   },
 ];
@@ -42,7 +42,7 @@ const fashionItems = [
 export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const [showForm, setShowForm] = useState(false);
-
+  const [showSkills, setShowSkills] = useState(false);
 
   return (
     <main role="main" className="min-h-screen bg-neutral-50 text-gray-900">
@@ -58,28 +58,13 @@ export default function Home() {
 
             {/* Social Links */}
             <div className="social-links">
-              <a
-                href="https://github.com/Ayah0512"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-              >
+              <a href="https://github.com/Ayah0512" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a
-                href="https://www.linkedin.com/in/aya-hasegawa-46786a137/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-              >
+              <a href="https://www.linkedin.com/in/aya-hasegawa-46786a137/" target="_blank" rel="noreferrer">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
-              <a
-                href="https://tripinthedream.company.site/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="My shop"
-              >
+              <a href="https://tripinthedream.company.site/" target="_blank" rel="noreferrer">
                 <i className="fa-solid fa-bag-shopping"></i>
               </a>
             </div>
@@ -93,82 +78,72 @@ export default function Home() {
             </p>
           </section>
 
+          {/* ===== TECHNICAL SKILLS (popup) ===== */}
+          <div className="text-center mt-10">
+            <button onClick={() => setShowSkills(!showSkills)} className="skills-btn">
+              {showSkills ? "✖" : "Show Technical Skills"}
+            </button>
+          </div>
+
+          {showSkills && (
+            <div className="skills-popup">
+              <div className="skills-content">
+                <h2>Technical Skills</h2>
+                <ul>
+                  <li>React & Next.js</li>
+                  <li>Front-end design (CSS, Tailwind)</li>
+                  <li>UI/UX and project teamwork</li>
+                  <li>Version control (Git & GitHub)</li>
+                </ul>
+              </div>
+            </div>
+          )}
+
           {/* ===== PROJECTS ===== */}
           <section id="projects" className="card p-8 bg-white shadow-md rounded-xl">
             <h2 className="text-2xl font-semibold mb-6">Projects</h2>
             <FashionShow items={fashionItems} />
           </section>
 
-          {/* ===== CONTACT BUTTON & MODAL===== */}
-          <section id="contact" className="ext-center my-12">
-            <button 
-            onClick={() => setShowForm(true)}
-            className="contact-btn"
-            >
-              Contact Me 
+          {/* ===== CONTACT BUTTON ===== */}
+          <section id="contact" className="text-center my-12">
+            <button onClick={() => setShowForm(true)} className="contact-btn">
+              Contact Me
             </button>
 
             {showForm && (
               <div className="modal-overlay" onClick={() => setShowForm(false)}>
                 <div className="contact-modal" onClick={(e) => e.stopPropagation()}>
-                  <button
-                  className="close-btn"
-                  onClick={() => setShowForm(false)}
-                  >
-                    ✖
-                    </button>
-                    <h2>Contact Me</h2>
-                    <p>Interested in collaborating? Reach out!
-                      I’d be happy to discuss projects or creative opportunities.</p>
+                  <button className="close-btn" onClick={() => setShowForm(false)}>✖</button>
+                  <h2>Contact Me</h2>
+                  <p>Interested in collaborating? Reach out! I’d be happy to discuss projects or creative opportunities.</p>
 
-                    <form 
+                  <form
                     className="contact-form"
                     action="https://docs.google.com/forms/d/e/1FAIpQLScvre99W_Y3uLfvGrh7ekPmiZfxwm-DplBMHnZJKuJqp99fLw/formResponse"
                     method="POST"
                     target="_hidden_iframe"
                     onSubmit={() => alert("Thank you! Your message has been sent")}
-                    >
-                      <input type="hidden" name="fvv" value="1" />
-                      <input type="hidden" name="draftResponse" value="[]" />
-                      <input type="hidden" name="pageHistory" value="0" />
-                      
-                      <label>Last Name</label>
-                      <input 
-                      type="text" 
-                      name="entry.1221858622"
-                      placeholder="Your last name" 
-                      required 
-                      />
-                      
-                      <label>First Name</label> 
-                      <input 
-                      type="text" 
-                      name="entry.1191675254" 
-                      placeholder="Your first name" 
-                      required 
-                      />
-                      
-                      <label>Email</label>
-                      <input 
-                       type="email" 
-                       name="entry.147600166" 
-                       placeholder="your@email.com" 
-                       required 
-                       />
-                       <label>Message</label>
-                       <textarea 
-                       name="entry.132592834" 
-                       placeholder="Write your message here..." 
-                       required
-                       ></textarea>
-                       
-                       <button type="submit" className="send-btn">
-                        <i className="fa-solid fa-paper-plane"></i> Send
-                        </button>
-                        </form>
+                  >
+                    <label>Last Name</label>
+                    <input type="text" name="entry.1221858622" placeholder="Your last name" required />
 
-                        <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
-                    </div>
+                    <label>First Name</label>
+                    <input type="text" name="entry.1191675254" placeholder="Your first name" required />
+
+                    <label>Email</label>
+                    <input type="email" name="entry.147600166" placeholder="your@email.com" required />
+
+                    <label>Message</label>
+                    <textarea name="entry.132592834" placeholder="Write your message here..." required></textarea>
+
+                    <button type="submit" className="send-btn">
+                      <i className="fa-solid fa-paper-plane"></i> Send
+                    </button>
+                  </form>
+
+                  <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+                </div>
               </div>
             )}
           </section>
