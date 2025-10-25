@@ -20,6 +20,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Design Overview
+The color palette combines soft pink tones (#fce4ec) with deep burgundy accents (#2b0f16) to evoke warmth and elegance, while maintaining strong contrast for readability.
+Typography relies on sans-serif fonts (like Inter or Poppins) for clarity and a contemporary feel.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

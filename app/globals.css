@@ -6,17 +6,35 @@
 
 
 :root {
-  --accent: #f2a9b9;
-  --bg: #3e1620;
-  --card: #ffffff;
-  --text: #fefafc;
+  --accent: #f2a9b9;           
+  --bg: #3e1620;               
+  --card: #ffffff;             
+  --text: #fefafc;             
+  --color-bg: #fdf9fa;         
+  --color-primary: #2b0f16;    
+  --color-accent: #f2a9b9;     
+
+  --font-main: "Poppins", sans-serif;
+  --font-large: 2rem;
+  --font-medium: 1.25rem;
+  --font-small: 0.95rem;
+
+  --radius: 12px;
+  --shadow: 0 8px 22px rgba(0, 0, 0, 0.6);
+}
+
+
+:target {
+  scroll-margin-top: 120px; 
 }
 
 
 html { 
   font-size: clamp(15px, 1.25vw, 18px); 
   box-sizing: border-box; 
+  scroll-behavior: smooth;
 }
+
 *, *::before, *::after { 
   box-sizing: inherit; 
 }
@@ -80,6 +98,43 @@ html {
 @keyframes fadeInTitle {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🌸 NAVIGATION BAR STYLE */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2rem;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  background: rgba(43, 15, 22, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+}
+
+.navbar a {
+  display: inline-block;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #f8f6f7;
+  background: linear-gradient(145deg, rgba(60, 25, 35, 0.9), rgba(25, 10, 15, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: linear-gradient(145deg, rgba(90, 40, 55, 1), rgba(40, 15, 25, 1));
+  transform: scale(1.05);
+  box-shadow: 0 0 14px rgba(242, 169, 185, 0.5);
+  border-color: rgba(242, 169, 185, 0.5);
 }
 
 
@@ -335,15 +390,15 @@ a:hover {
 
 .fashion-show .model img {
   width: 100%;
-  height: 200px;       /* fixed height for all images */
-  object-fit: cover;   /* crop if needed without stretching */
-  border-radius: 8px;  /* optional rounded corners */
+  height: 200px;      
+  object-fit: cover;   
+  border-radius: 8px;  
 }
 .avatar-container {
   position: relative;
   width: 280px;
   height: auto;
-  aspect-ratio: 3 / 4; /* adjust based on your image proportions */
+  aspect-ratio: 3 / 4; 
   margin: 0 auto;
 }
 
@@ -370,30 +425,50 @@ a:hover {
   color: #fff;
 }
 
-/* === CONTACT POPUP MODAL ===*/
-.contact-btn {
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  position: relative;
+  margin: 3rem auto;
+  text-align: center;
+}
+
+/* Center both buttons horizontally but spaced apart */
+.contact-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* Reusable button style (Contact + Design) */
+.contact-btn,
+.design-btn {
   background: linear-gradient(145deg, #f2a9b9, #c06b7f);
   border: none;
   color: #fff;
-  font-size: 1.1rem;
-  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  padding: 0.8rem 1.6rem;
   border-radius: 999px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  display: block;
-  margin: 2rem auto;
+  font-family: var(--font-main);
+  font-weight: 500;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-.contact-btn:hover {
-  transform: scale(1.05);
-  box-shadow:0 0 20px rgba(242, 169, 185, 0.4);
+.contact-btn:hover,
+.design-btn:hover {
+  background: #ffb7c5;
+  transform: translateY(-2px);
 }
 
+/* ===== CONTACT MODAL ===== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0m 0.7);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -402,6 +477,136 @@ a:hover {
 }
 
 .contact-modal {
+  background: rgba(30, 10, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  width: 500px; 
+  color: #fdf0f3;
+  text-align: left;
+  animation: fadeIn 0.5s ease;
+  position: relative;
+}
+
+.contact-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contact-form label {
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  color: #ffdbe5;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #f2a9b9;
+}
+
+.send-btn {
+  align-self: center;
+  background: linear-gradient(145deg, #f2a9b9, #c06b7f);
+  border: none;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.send-btn:hover {
+  background: linear-gradient(145deg, #ffb4c5, #d27c8b);
+  transform: scale(1.05);
+}
+
+
+.contact-modal h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: #fdf0f3;
+}
+
+/* ===== DESIGN CARD ===== */
+.design-card {
+  background: rgba(30, 10, 15, 0.9);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 700px;  
+  color: #f5f5f5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.design-card h2 {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+/* === DESIGN CHOICES POPUP === */
+.design-modal {
+  background: rgba(30, 10, 15, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 192, 203, 0.15);
+  padding: 2rem 2.5rem;
+  width: 500px;
+  color: #fdf0f3;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+  position: relative;
+}
+
+.design-modal h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+  color: #fdf0f3;
+}
+
+.design-modal p {
+  line-height: 1.6;
+  color: #f5f5f5;
+  font-size: 1rem;
+}
+
+.design-modal .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #f2a9b9;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.design-modal .close-btn:hover {
+  color: #fff;
+}
+
+.style-modal {
   background: rgba(30, 10, 15, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 25px rgba(255, 192, 203, 0.15);
@@ -414,65 +619,20 @@ a:hover {
   position: relative;
 }
 
-.contact-modal h2 {
+.style-modal h2 {
   font-family: 'Playfair Display', serif;
   text-align: center;
-  color: #fdf0f3;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 10px;
-  color: #fff;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: 2px solid #f2a9b9;
-}
-
-.send-btn {
-  background: linear-gradient(145deg, #f2a9b9, #c06b7f);
-  border: none;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 999px;
-  cursor: pointer;
-  align-self: center;
-  transition: 0.3s ease;
-}
-
-.send-btn:hover {
-  background: linear-gradient(145deg, #ffb4c5, #d27c8b);
-  transform: scale(1.05);
-}
-
-.close-btn {
-  position:absolute;
-  top: 12px;
-  right: 12px;
-  background: transparent;
-  border: none;
   color: #f2a9b9;
-  font-size: 1.3rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
+  margin-bottom: 1rem;
 }
 
-.close-btn:hover {
-  color : #fff;
+#contact .flex {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  width: 100%;
+  text-align: center;
 }
 
 @keyframes fadeIn {
@@ -487,8 +647,19 @@ a:hover {
 .hero .social-links {
   display: flex;
   justify-content: center;
-  gap: 2.5rem; /* More breathing room between icons */
+  gap: 2.5rem; 
   margin-top: 1.8rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* base icon styling */
