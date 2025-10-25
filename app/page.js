@@ -9,53 +9,32 @@ const fashionItems = [
   {
     img: "/Aya-h.jpg",
     title: "Hello, it's me Aya",
-<<<<<<< HEAD
     desc: "Student at Informatic school Epitech Strasbourg, Currently seeking an internship in web development to expand my skills and contribute to creative projects.",
-=======
-    desc: "Student at Informatic school Epitech Strasbourg, looking for an internship in web development.",
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
     link: "https://www.linkedin.com/in/aya-hasegawa-46786a137/",
   },
   {
     img: "/Trip-in-the-dream.jpg",
     title: "My e-shop",
-<<<<<<< HEAD
     desc: "Built and managed an online shop, handling product listings, user experience, and visual design.",
-=======
-    desc: "Built and managed an online shop; product listings, UX & design.",
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
     link: "https://tripinthedream.company.site/",
   },
   {
     img: "/Aya_working.webp",
     title: "CV Website",
-<<<<<<< HEAD
     desc: "Created a responsive online CV using HTML and CSS, including a printable version for easy download.",
-=======
-    desc: "Responsive CV — HTML/CSS design and printable version.",
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
     github: "https://github.com/EpitechMscProPromo2028/T-WEB-500-digitalResume-STG_aya-hasegawa",
     pdf: "/CV Français Aya HASEGAWA.pdf"
   },
   {
     img: "/Nicejob.png",
     title: "Jobboard project - Nice Job- ",
-<<<<<<< HEAD
     desc: "Collaborated with teammates on a Job Board platform, developing with Vue.js and Tailwind CSS to deliver a modern, responsive interface.",
-=======
-    desc: "First time working with teammates on a Job Board project, using new technologies like Vue.js and Tailwind.",
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
     link: "https://github.com/EpitechMscProPromo2028/T-WEB-501-STG_1",
   },
   {
     img: "/NiceJobproject.webm",
-<<<<<<< HEAD
     title: "Showcasing how the Nice Job website functions —",
     desc: "primarily responsible for the front-end development, while also contributing to back-end integration.",
-=======
-    title: "How does the Nice Job site work",
-    desc: "In charge of the frontend part primarily, and some backend to connect both sides.",
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
     link: "#",
   },
 ];
@@ -110,12 +89,7 @@ export default function Home() {
           <section id="about" className="card p-8">
             <h2 className="text-2xl font-semibold mb-2">About</h2>
             <p>
-<<<<<<< HEAD
               Student at Epitech Strasbourg, passionate about front-end development and digital creation.
-=======
-              Student at Epitech Strasbourg, passionate about front-end
-              development and digital creation.
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
             </p>
           </section>
 
@@ -144,12 +118,8 @@ export default function Home() {
                     ✖
                     </button>
                     <h2>Contact Me</h2>
-<<<<<<< HEAD
                     <p>Interested in collaborating? Reach out!
                       I’d be happy to discuss projects or creative opportunities.</p>
-=======
-                    <p>Interrsted in collaborating? Reach out!</p>
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
 
                     <form 
                     className="contact-form"

@@ -11,17 +11,7 @@ export default function Curtain({ onOpen }) {
     // Reveal portfolio slightly after curtains open
     setTimeout(onOpen, 1800);
   };
-<<<<<<< HEAD
   
-=======
-
-  // Optional: auto-open after 1s without clicking
-  // useEffect(() => {
-  //   const timer = setTimeout(handleClick, 1000);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
->>>>>>> ab67484bcd1e97b623e04b1292b86a6eb0302513
   return (
     <div className="curtain-container" onClick={handleClick}>
       {/* Left curtain */}
